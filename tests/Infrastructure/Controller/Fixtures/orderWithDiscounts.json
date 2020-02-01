@@ -1,0 +1,28 @@
+{
+  "order": {
+    "lines": [
+      {
+        "product_id": 1,
+        "product_name": "Lasagne",
+        "quantity": 1,
+        "unit_price": 1000,
+        "discount": 0
+      },
+      {
+        "product_id": 2,
+        "product_name": "Pizza",
+        "quantity": 3,
+        "unit_price": 1000,
+        "discount": 1000
+      },
+      {
+        "product_id": 4,
+        "product_name": "Pasta",
+        "quantity": 1,
+        "unit_price": 1000,
+        "discount": 200
+      }
+    ],
+    "currency": "EUR"
+  }
+}

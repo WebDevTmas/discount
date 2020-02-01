@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\EventListener;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
@@ -25,7 +26,7 @@ class JsonRequestListener
             return;
         }
 
-        $response = Response::create('Unable to parse request.', 400);
+        $response = JsonResponse::create([ 'errors' => [ 'Unable to parse request.' ] ], 400);
         $event->setResponse($response);
     }
 

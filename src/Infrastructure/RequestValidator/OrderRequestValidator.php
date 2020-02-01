@@ -19,7 +19,10 @@ class OrderRequestValidator implements RequestValidator
     public function validate(Request $request): ?Response
     {
         if (! $request->request->has('order')) {
-            return new JsonResponse('Order not found in request.', 400);
+            return new JsonResponse(
+                [ 'errors' => [ 'property' => 'order', 'message' => 'Order not found in request.' ] ],
+                400
+            );
         }
 
         $validator = new Validator();
@@ -43,6 +46,14 @@ class OrderRequestValidator implements RequestValidator
             return null;
         }
 
-        return new JsonResponse([ 'errors' => $result->getMessages() ], 400);
+        $messages = [];
+        foreach ($result->getFailures() as $failure) {
+            $messages[] = [
+                'message' => $failure->format(),
+                'property' => $failure->getKey()
+            ];
+        }
+
+        return new JsonResponse([ 'errors' => $messages ], 400);
     }
 }
