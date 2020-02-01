@@ -1,0 +1,19 @@
+services:
+  app.discount.percent:
+    class: App\Application\Discounts\PercentDiscount
+    arguments:
+      - 20
+      - 4
+      - 5
+
+  app.discount.volume:
+    class: App\Application\Discounts\VolumeDiscount
+    arguments:
+      - 2
+      - 1
+
+  app.apply_discounts:
+    class: App\Application\ApplyDiscounts
+    arguments:
+      - '@app.discount.percent'
+      - '@app.discount.volume'

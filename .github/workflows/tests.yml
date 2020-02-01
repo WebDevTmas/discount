@@ -1,0 +1,22 @@
+name: Tests
+
+on: [push]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkoud repository
+        uses: actions/checkout@v1
+
+      - name: Composer install
+        uses: php-actions/composer@v1 # or alternative dependency management
+
+      - name: Run phpunit
+        uses: php-actions/phpunit@v1
+        with:
+          config: phpunit.xml.dist
+
+      - name: deptrac
+        uses: smoench/deptrac-action@master

@@ -1,0 +1,6 @@
+services:
+  App\Infrastructure\Controller\DiscountController:
+    arguments:
+      - '@app.apply_discounts'
+    tags:
+      - 'controller.service_arguments'

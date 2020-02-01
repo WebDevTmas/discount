@@ -1,0 +1,5 @@
+services:
+  app.event_listener.jqon_request:
+    class: App\Infrastructure\EventListener\JsonRequestListener
+    tags:
+      - { name: kernel.event_listener, event: kernel.request }
